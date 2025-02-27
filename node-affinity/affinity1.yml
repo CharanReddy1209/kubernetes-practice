@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: affinity
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: redis:alpine
+    affinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: disktype
+            operator: In
+            value: ssd

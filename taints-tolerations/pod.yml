@@ -13,4 +13,3 @@ spec:
   containers:
   - name: myapp
     image: redis
-    
