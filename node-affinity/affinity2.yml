@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: affinit2
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: redis:alpine
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1
+          preference:
+          - matchExpressions:
+            - key: disktype
+              operator: In
+              values:
+              - hdd
